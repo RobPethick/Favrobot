@@ -5,7 +5,6 @@ class Collection(object):
         self.name = json['name']
         self.shareWidgetsByDefault = json['shareWidgetsByDefault']
         self.collectionId = json['collectionId']
-        self.sharedToUsers = json['sharedToUsers']
         self.publicSharing = json['publicSharing']
         self.archived = json['archived']
         self.users = []

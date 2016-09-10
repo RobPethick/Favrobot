@@ -1,22 +1,7 @@
-from models.user import User
+
 from models.widget import Widget
 import unittest
 import datetime
-
-class TestUserMethods(unittest.TestCase):
-
-    def test_constructorParsesDictionary(self):
-        # Arrange
-        userId = 'abc123'
-        role = 'admin'
-        dictionary = {'userId': userId, 'role': role}
-
-        # Act
-        user = User(dictionary)
-
-        #Assert
-        self.assertEqual(userId, user.userId)
-        self.assertEqual(role, user.role)
 
 class TestWidgetMethods(unittest.TestCase):
 
@@ -114,20 +99,6 @@ class TestWidgetMethods(unittest.TestCase):
         # Assert
         self.assertEqual(isDailyBoard, datetime.datetime(2020, 6, 13))
 
-    class TestCollectionMethods(unittest.TestCase):
-
-        def test_constructorParsesDictionary(self):
-            # Arrange
-            name = 'testCollection'
-            shareWidgetsByDefault = 'public'
-            collectionId = '135'
-            publicSharing = 'True'
-            archived = 'False'
-            userId1 = 'abc123'
-            userId2 = 'xyz789'
-            userDictionary1 = {'userId': userId1, 'role': 'admin'}
-            userDictionary2 = {'userId': userId2, 'role': 'admin'}
-            dictionary = {}
-
+ 
 if __name__ == '__main__':
     unittest.main()

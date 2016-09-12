@@ -1,5 +1,7 @@
 from models.collection import Collection
+from testHelpers.mockWidget import MockWidget
 import unittest
+import datetime
 
 
 class TestCollectionMethods(unittest.TestCase):
@@ -52,6 +54,39 @@ class TestCollectionMethods(unittest.TestCase):
         self.basicCollection.addWidgets(fakeWidgetList)
         
         # Assert
+        self.assertEqual(self.basicCollection.widgets[0], 'A')
+        self.assertEqual(self.basicCollection.widgets[1], 'B')
+
+    def test_getNextDailyGoalsNameGetsDatesOnlyFromDailyBoards(self):
+        # Arrange
+        mockDailyWidget = MockWidget(True, datetime.datetime(2016,9,12))
+        mockNotDailyWidget = MockWidget(False, datetime.datetime(2014,9,12))
+        self.basicCollection.widgets = []
+        self.basicCollection.addWidgets([mockDailyWidget, mockNotDailyWidget])
+
+        # Act
+        self.basicCollection.getNextDailyGoalsName()
+
+        # Arrange
+        self.assertTrue(self.basicCollection.widgets[0].hasDateBeenQueried)
+        self.assertFalse(self.basicCollection.widgets[1].hasDateBeenQueried)
+
+
+    def test_getNextDailyGoalsNameReturnsNameOneWeekAfterMostRecentDailyBoard(self):
+        # Arrange
+        mockFirstDailyWidget = MockWidget(True, datetime.datetime(2016,9,12))
+        mockSecondDailyWidget = MockWidget(True, datetime.datetime(2016,9,19))
+        self.basicCollection.widgets = []
+        self.basicCollection.addWidgets([mockFirstDailyWidget, mockSecondDailyWidget])
+
+        # Act
+        dailyGoalsName = self.basicCollection.getNextDailyGoalsName()
+
+        # Arrange
+        self.assertEqual(dailyGoalsName, 'Daily Goals 26-09-2016')
+
+
+
 
 if __name__ == '__main__':
     unittest.main()

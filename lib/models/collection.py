@@ -1,4 +1,4 @@
-from models.user import User
+from .user import User
 import datetime
 class Collection(object):
     def __init__(self, json):

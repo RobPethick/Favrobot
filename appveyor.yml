@@ -10,4 +10,4 @@ install:
 build: off
 
 test_script:
-  - "%PYTHON%\\Scripts\\mut.py --target models --unit-test tests -c"
+  - "%PYTHON%\\Scripts\\mut.py --target lib --unit-test tests -c"

@@ -1,4 +1,4 @@
-from models.user import User
+from lib.models.user import User
 import unittest
 
 class TestUserMethods(unittest.TestCase):

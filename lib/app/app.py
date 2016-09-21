@@ -1,6 +1,6 @@
 from .requester import Requester
-from models.collection import Collection
-from models.widget import Widget
+from lib.models.collection import Collection
+from lib.models.widget import Widget
 
 class App(object):
 

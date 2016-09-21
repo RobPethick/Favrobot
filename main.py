@@ -1,4 +1,4 @@
-from lib.app import App
+from lib.app.app import App
 import argparse
 
 def main():

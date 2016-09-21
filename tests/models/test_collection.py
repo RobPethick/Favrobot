@@ -1,4 +1,4 @@
-from models.collection import Collection
+from lib.models.collection import Collection
 from testHelpers.mockWidget import MockWidget
 import unittest
 import datetime

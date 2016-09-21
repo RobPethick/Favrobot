@@ -1,5 +1,5 @@
 
-from models.widget import Widget
+from lib.models.widget import Widget
 import unittest
 import datetime
 

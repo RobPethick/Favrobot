@@ -1,0 +1,13 @@
+environment:
+
+  matrix:
+
+    - PYTHON: "C:\\Python35-x64"
+
+install:
+  - "%PYTHON%\\python.exe -m pip install MutPy"
+
+build: off
+
+test_script:
+  - "mut.py --target models --unittest tests "

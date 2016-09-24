@@ -1,43 +1,18 @@
 from .requester import Requester
 from lib.models.collection import Collection
 from lib.models.widget import Widget
+from .collectionService import CollectionService
+from .widgetService import WidgetService
 
 class App(object):
 
     def __init__(self, email, password, organizationId):
         self.requester = Requester(email, password, organizationId)
-        self.success = False
-        self.defaultColumnNames = ['Doing', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+        self.widgetService = WidgetService(self.requester)
+        self.collectionService = CollectionService(self.requester, self.widgetService)
 
-    def run(self, collection_name):
-        collectionId = self.getCollectionIdFromName(collection_name)
-        collection = self.getCollection(collectionId)
+    def createWeeklyBoard(self, collection_name):
+        collectionId = self.collectionService.getCollectionIdFromName(collection_name)
+        collection = self.collectionService.getCollection(collectionId)
         nextBoardName = collection.getNextDailyGoalsName()
-        self.success = self.addWeeklyBoard(collection, nextBoardName)
-
-    def getCollectionIdFromName(self, collection_name):
-        collectionsJson = self.requester.getCollections()
-        for collectionJson in collectionsJson['entities']:
-            collection = Collection(collectionJson)
-            if collection_name in collection.name:
-                print(collection.name + ": collection found")
-                return collection.collectionId
-
-    def getCollection(self, collectionId):
-        collectionJson = self.requester.getCollection(collectionId)
-        collection = Collection(collectionJson)
-        collection.addWidgets(self.getWidgets(collection.collectionId))
-        return collection
-
-    def getWidgets(self, collectionId):
-        widgetsJson = self.requester.getWidgets(collectionId)
-        widgets = []
-        for widgetJson in widgetsJson['entities']:
-            widgets.append(Widget(widgetJson))
-        return widgets
-
-    def addWeeklyBoard(self, collection, boardName):
-        newBoard = Widget(self.requester.createBoard(boardName, collection.collectionId))
-        for columnName in self.defaultColumnNames:
-            self.requester.addColumnToBoard(columnName, newBoard.widgetId)
-        return True
+        self.widgetService.addWeeklyBoard(collection, nextBoardName)

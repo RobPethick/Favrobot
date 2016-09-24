@@ -4,7 +4,7 @@ import unittest
 import datetime
 
 
-class TestCollectionMethods(unittest.TestCase):
+class TestCollection(unittest.TestCase):
 
     def setUp(self):
         name = 'testCollection'

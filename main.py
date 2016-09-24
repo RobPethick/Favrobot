@@ -10,7 +10,7 @@ def main():
     args = parser.parse_args()
 
     app = App(args.email, args.password, args.organization_id)
-    app.run(args.collection_name)
+    app.createWeeklyBoard(args.collection_name)
 
     if(app.success):
         print("App completed successfully")

@@ -1,7 +1,7 @@
 from lib.models.user import User
 import unittest
 
-class TestUserMethods(unittest.TestCase):
+class TestUser(unittest.TestCase):
 
     def test_constructorParsesDictionary(self):
         # Arrange

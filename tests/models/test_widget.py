@@ -3,7 +3,7 @@ from lib.models.widget import Widget
 import unittest
 import datetime
 
-class TestWidgetMethods(unittest.TestCase):
+class TestWidget(unittest.TestCase):
 
     def setUp(self):
         widgetType = 'board'

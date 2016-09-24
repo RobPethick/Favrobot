@@ -38,7 +38,6 @@ class TestWidgetService(unittest.TestCase):
         self.assertTrue(self.requester.hasCreateBoardBeenCalled)
         self.assertEqual(self.requester.columnsAdded, ['Doing', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'])
 
-        # Assert
 
 if __name__ == '__main__':
     unittest.main()

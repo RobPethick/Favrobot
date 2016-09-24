@@ -17,4 +17,3 @@ class WidgetService(object):
         newBoard = Widget(self.requester.createBoard(boardName, collection.collectionId))
         for columnName in self.defaultColumnNames:
             self.requester.addColumnToBoard(columnName, newBoard.widgetId)
-        return True

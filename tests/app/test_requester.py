@@ -142,6 +142,30 @@ class TestRequester(unittest.TestCase):
         with self.assertRaisesRegex(Exception, 'Post column request returned 404 code'):
             self.requester.addColumnToBoard("columnName", "fakeBoardId")
 
+    def test_getTagByNameSuccess(self):
+        # Arrange
+        self.requester = Requester('fake@email.com', 'password', 'organizationId')
+        self.requester.requests = MockRequests(200)
+
+        # Act
+        result = self.requester.getTagsByName("tagName")
+
+        # Assert
+        self.assertEqual(self.requester.requests.auth, self.auth)
+        self.assertEqual(self.requester.requests.url, 'https://favro.com/api/v1/tags')
+        self.assertEqual(self.requester.requests.headers, {'organizationId': 'organizationId'})
+        self.assertEqual(self.requester.requests.data, {'name': 'tagName'})
+
+    def test_getTagByNameError(self):
+        # Arrange
+        self.requester = Requester('fake@email.com', 'password', 'organizationId')
+        self.requester.requests = MockRequests(404)
+
+        # Act/Assert
+        with self.assertRaisesRegex(Exception, 'Get tag request returned 404 code'):
+            self.requester.getTagsByName("tagName")
+
+
 
 
 

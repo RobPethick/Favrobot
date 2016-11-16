@@ -12,3 +12,15 @@ That is why after lots of tweaking I have settled on my very own way I use [favr
 
 
 ![SampleImage](SampleBoard.png)
+
+This app simply creates a new board with my 6 columns and the correct name (Daily Goals + date 7 days after most recent board).
+
+## My way of trying out new stuff
+
+This is also partly just a place for me to have an excuse to try out various things. Python and VS Code have proved to be a pretty nice pairing. 
+
+Mutation testing was an interesting one to add (after [recommendation from uncle bob](http://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html)). As well as running tests on commit with app veyor.
+
+## My way of giving a little back, maybe
+
+I don't expect anyone will have excatly the same task management needs that I do, but if anyone wanted to use anything here I have included an MIT license so go ahead!

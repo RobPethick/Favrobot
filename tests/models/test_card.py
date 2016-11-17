@@ -1,7 +1,7 @@
 from lib.models.card import Card
 import unittest
 
-class TestUser(unittest.TestCase):
+class TestCard(unittest.TestCase):
 
     def test_constructorParsesDictionary(self):
         # Arrange        

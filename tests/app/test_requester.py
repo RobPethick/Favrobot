@@ -165,9 +165,27 @@ class TestRequester(unittest.TestCase):
         with self.assertRaisesRegex(Exception, 'Get tag request returned 404 code'):
             self.requester.getTagsByName("tagName")
 
+    def test_getCardByIdSuccess(self):
+        # Arrange
+        self.requester = Requester('fake@email.com', 'password', 'organizationId')
+        self.requester.requests = MockRequests(200)
 
+        # Act
+        result = self.requester.getCardById("156")
 
+        # Assert
+        self.assertEqual(self.requester.requests.auth, self.auth)
+        self.assertEqual(self.requester.requests.url, 'https://favro.com/api/v1/cards/156')
+        self.assertEqual(self.requester.requests.headers, {'organizationId': 'organizationId'})
 
+    def test_getCardByIdError(self):
+        # Arrange
+        self.requester = Requester('fake@email.com', 'password', 'organizationId')
+        self.requester.requests = MockRequests(500)
+
+        # Act/Assert
+        with self.assertRaisesRegex(Exception, 'Get card request returned 500 code'):
+            self.requester.getCardById("256")
 
 
 if __name__ == '__main__':

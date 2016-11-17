@@ -52,3 +52,10 @@ class Requester(object):
         r = self.requests.get(self.favroBaseUrl + 'tags', auth= self.authHeader, headers= self.organization, data= data)
         if r.status_code!=200:
             raise Exception("Get tag request returned " + str(r.status_code) + " code")
+        return r.json()
+
+    def getCardById(self, cardId):
+        r = self.requests.get(self.favroBaseUrl + 'cards/' + cardId, auth= self.authHeader, headers= self.organization)
+        if r.status_code!=200:
+            raise Exception("Get card request returned " + str(r.status_code) + " code")
+        return r.json()

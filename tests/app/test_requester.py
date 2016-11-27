@@ -187,6 +187,29 @@ class TestRequester(unittest.TestCase):
         with self.assertRaisesRegex(Exception, 'Get card request returned 500 code'):
             self.requester.getCardById("256")
 
+    def test_addTagToCardSuccess(self):
+        # Arrange
+        self.requester = Requester('fake@email.com', 'password', 'organizationId')
+        self.requester.requests = MockRequests(200)
+
+        # Act
+        result = self.requester.addTagToCard("156", "987")
+
+        # Assert
+        self.assertEqual(self.requester.requests.auth, self.auth)
+        self.assertEqual(self.requester.requests.url, 'https://favro.com/api/v1/cards/156')
+        self.assertEqual(self.requester.requests.headers, {'organizationId': 'organizationId'})
+        self.assertEqual(self.requester.requests.data, {'addTagIds': ['987']})
+
+    def test_addTagToCardError(self):
+        # Arrange
+        self.requester = Requester('fake@email.com', 'password', 'organizationId')
+        self.requester.requests = MockRequests(500)
+
+        # Act/Assert
+        with self.assertRaisesRegex(Exception, 'Update card request returned 500 code'):
+            self.requester.addTagToCard("256", "987")
+
 
 if __name__ == '__main__':
     unittest.main()

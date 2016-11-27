@@ -62,7 +62,7 @@ class Requester(object):
 
     def addTagToCard(self, cardId, tagId):
         data = {'addTagIds':[tagId]}
-        r = self.requests.put(self.favroBaseUrl + 'cards/' + cardId, auth=self.authHeader, headers= self.organization)
+        r = self.requests.put(self.favroBaseUrl + 'cards/' + cardId, auth=self.authHeader, headers= self.organization, data=data)
         if r.status_code!=200:
             raise Exception("Update card request returned " + str(r.status_code) + " code")
     

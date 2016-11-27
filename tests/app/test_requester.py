@@ -148,7 +148,7 @@ class TestRequester(unittest.TestCase):
         self.requester.requests = MockRequests(200)
 
         # Act
-        result = self.requester.getTagsByName("tagName")
+        result = self.requester.getTagByName("tagName")
 
         # Assert
         self.assertEqual(self.requester.requests.auth, self.auth)
@@ -163,7 +163,7 @@ class TestRequester(unittest.TestCase):
 
         # Act/Assert
         with self.assertRaisesRegex(Exception, 'Get tag request returned 404 code'):
-            self.requester.getTagsByName("tagName")
+            self.requester.getTagByName("tagName")
 
     def test_getCardByIdSuccess(self):
         # Arrange

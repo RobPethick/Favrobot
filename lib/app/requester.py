@@ -47,7 +47,7 @@ class Requester(object):
             raise Exception("Post column request returned " + str(r.status_code) + " code")
         return r.json()
 
-    def getTagsByName(self, tagName):
+    def getTagByName(self, tagName):
         data = {'name': tagName}
         r = self.requests.get(self.favroBaseUrl + 'tags', auth= self.authHeader, headers= self.organization, data= data)
         if r.status_code!=200:

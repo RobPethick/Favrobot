@@ -5,6 +5,8 @@ class MockRequester(object):
         self.hasGetCollectionsBeenCalled = False
         self.hasGetWidgetsBeenCalled = False
         self.hasCreateBoardBeenCalled = False
+        self.hasGetCardByIdBeenCalled = False
+        self.hasGetTagByNameBeenCalled = False
         self.columnsAdded = []
     
     def getCollections(self):
@@ -25,3 +27,11 @@ class MockRequester(object):
     
     def addColumnToBoard(self, columnName, boardId):
         self.columnsAdded.append(columnName)
+
+    def getCardById(self, id):
+        self.hasGetCardByIdBeenCalled = True
+        return self.card
+
+    def getTagByName(self, id):
+        self.hasGetTagByNameBeenCalled = True
+        return self.tag

@@ -16,10 +16,10 @@ class TestTag(unittest.TestCase):
         card = Tag(dictionary)
 
         # Assert
-        self.assertEquals(name, card.name)
-        self.assertEquals(tagId, card.tagId)
-        self.assertEquals(organizationId, card.organizationId)
-        self.assertEquals(color, card.color)
+        self.assertEqual(name, card.name)
+        self.assertEqual(tagId, card.tagId)
+        self.assertEqual(organizationId, card.organizationId)
+        self.assertEqual(color, card.color)
 
 if __name__ == '__main__':
     unittest.main()

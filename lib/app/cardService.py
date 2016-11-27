@@ -8,3 +8,8 @@ class CardService(object):
         cardJson = self.requester.getCardById(cardId)
         card = Card(cardJson)
         return card
+    
+    def addTagToCard(self, card, tag):
+        cardJson = self.requester.addTagToCard(self, card.cardId, tag.tagId)
+        card = Card(cardJson)
+        return card

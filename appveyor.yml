@@ -12,4 +12,4 @@ build: off
 
 test_script:
   - "%PYTHON%\\python.exe -m unittest"
-  - "%PYTHON%\\Scripts\\mut.py --target lib --unit-test tests -c"
+  - "%PYTHON%\\Scripts\\mut.py --target lib --unit-test tests -c -e"

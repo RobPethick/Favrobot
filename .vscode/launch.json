@@ -7,23 +7,7 @@
             "request": "launch",
             "stopOnEntry": true,
             "pythonPath": "${config.python.pythonPath}",
-            "program": "${workspaceRoot}/main.py",
-            "externalConsole": true,
-            "debugOptions": [
-                "WaitOnAbnormalExit",
-                "WaitOnNormalExit"
-            ]
-        },
-        {
-            "name": "Python Console Tests",
-            "type": "python",
-            "args": ["-m", "unittest"            
-            ],
-            "cwd": "${workspaceRoot}",
-            "request": "launch",
-            "stopOnEntry": false,
-            "pythonPath": "${config.python.pythonPath}",
-            "program": "${workspaceRoot}/tests/modelTests.py",
+            "program": "${workspaceRoot}\\main.py",
             "externalConsole": true,
             "debugOptions": [
                 "WaitOnAbnormalExit",

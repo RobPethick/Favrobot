@@ -16,3 +16,4 @@ class App(object):
         collection = self.collectionService.getCollection(collectionId)
         nextBoardName = collection.getNextDailyGoalsName()
         self.widgetService.addWeeklyBoard(collection, nextBoardName)
+        self.success = True

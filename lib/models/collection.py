@@ -3,7 +3,6 @@ import datetime
 class Collection(object):
     def __init__(self, json):
         self.name = json['name']
-        self.shareWidgetsByDefault = json['shareWidgetsByDefault']
         self.collectionId = json['collectionId']
         self.publicSharing = json['publicSharing']
         self.archived = json['archived']

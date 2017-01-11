@@ -6,11 +6,7 @@ class Widget(object):
         self.type = json['type']
         self.name = json['name']
         self.color = json['color']
-        self.publicSharing = json['publicSharing']
         self.widgetId = json['widgetCommonId']
-        self.users = []
-        for jsonUser in json['sharedToUsers']:
-            self.users.append(User(jsonUser))
 
     def isDailyBoard(self):
         return self.type =='board' and 'Daily Goals' in self.name

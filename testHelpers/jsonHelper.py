@@ -4,7 +4,6 @@ class JsonHelper(object):
         return {
             'name': name,
             'collectionId': id, 
-            'shareWidgetsByDefault': 'shareWidgetsByDefault', 
             'publicSharing': 'publicSharing', 
             'archived': 'archived', 
             'sharedToUsers': JsonHelper.getBasicSharedToUsersArray()}
@@ -14,9 +13,7 @@ class JsonHelper(object):
             'type': 'board',
             'name': name,
             'color': 'blue',
-            'publicSharing': 'public', 
-            'widgetCommonId': id, 
-            'sharedToUsers': JsonHelper.getBasicSharedToUsersArray()}
+            'widgetCommonId': id}
     
     def getBasicSharedToUsersArray():
         return [

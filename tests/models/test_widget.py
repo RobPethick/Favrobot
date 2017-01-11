@@ -9,13 +9,8 @@ class TestWidget(unittest.TestCase):
         widgetType = 'board'
         name = 'testBoard'
         color = 'red'
-        publicSharing = 'none'
         widgetId = '123'
-        userId1 = 'abc123'
-        userId2 = 'xyz789'
-        userDictionary1 = {'userId': userId1, 'role': 'admin'}
-        userDictionary2 = {'userId': userId2, 'role': 'admin'}
-        dictionary = {'type': widgetType, 'name': name, 'color': color, 'publicSharing': publicSharing, 'widgetCommonId': widgetId, 'sharedToUsers': [userDictionary1, userDictionary2]}
+        dictionary = {'type': widgetType, 'name': name, 'color': color, 'widgetCommonId': widgetId}
         self.basicWidget = Widget(dictionary)
 
     def test_constructorParsesDictionary(self):
@@ -23,13 +18,8 @@ class TestWidget(unittest.TestCase):
         widgetType = 'board'
         name = 'testBoard'
         color = 'red'
-        publicSharing = 'none'
         widgetId = '123'
-        userId1 = 'abc123'
-        userId2 = 'xyz789'
-        userDictionary1 = {'userId': userId1, 'role': 'admin'}
-        userDictionary2 = {'userId': userId2, 'role': 'admin'}
-        dictionary = {'type': widgetType, 'name': name, 'color': color, 'publicSharing': publicSharing, 'widgetCommonId': widgetId, 'sharedToUsers': [userDictionary1, userDictionary2]}
+        dictionary = {'type': widgetType, 'name': name, 'color': color, 'widgetCommonId': widgetId}
 
         # Act
         widget = Widget(dictionary)
@@ -38,11 +28,7 @@ class TestWidget(unittest.TestCase):
         self.assertEqual(widgetType, widget.type)
         self.assertEqual(name, widget.name)
         self.assertEqual(color, widget.color)
-        self.assertEqual(publicSharing, widget.publicSharing)
         self.assertEqual(widgetType, widget.type)
-        self.assertEqual(2, len(widget.users))
-        self.assertEqual(userId1, widget.users[0].userId)
-        self.assertEqual(userId2, widget.users[1].userId)
 
     def test_isDailyGoalsBoardReturnsFalseIfNotABoard(self):
         # Arrange

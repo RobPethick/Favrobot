@@ -8,7 +8,6 @@ class TestCollection(unittest.TestCase):
 
     def setUp(self):
         name = 'testCollection'
-        shareWidgetsByDefault = 'public'
         collectionId = '135'
         publicSharing = 'True'
         archived = 'False'
@@ -16,14 +15,13 @@ class TestCollection(unittest.TestCase):
         userId2 = 'xyz789'
         userDictionary1 = {'userId': userId1, 'role': 'admin'}
         userDictionary2 = {'userId': userId2, 'role': 'admin'}
-        dictionary = {'name': name, 'collectionId': collectionId, 'shareWidgetsByDefault': shareWidgetsByDefault, 'publicSharing': publicSharing, 'archived': archived, 'sharedToUsers': [userDictionary1, userDictionary2]}      
+        dictionary = {'name': name, 'collectionId': collectionId, 'publicSharing': publicSharing, 'archived': archived, 'sharedToUsers': [userDictionary1, userDictionary2]}      
         self.basicCollection = Collection(dictionary)
 
 
     def test_constructorParsesDictionary(self):
         # Arrange
         name = 'testCollection'
-        shareWidgetsByDefault = 'public'
         collectionId = '135'
         publicSharing = 'True'
         archived = 'False'
@@ -31,7 +29,7 @@ class TestCollection(unittest.TestCase):
         userId2 = 'xyz789'
         userDictionary1 = {'userId': userId1, 'role': 'admin'}
         userDictionary2 = {'userId': userId2, 'role': 'admin'}
-        dictionary = {'name': name, 'collectionId': collectionId, 'shareWidgetsByDefault': shareWidgetsByDefault, 'publicSharing': publicSharing, 'archived': archived, 'sharedToUsers': [userDictionary1, userDictionary2]}
+        dictionary = {'name': name, 'collectionId': collectionId, 'publicSharing': publicSharing, 'archived': archived, 'sharedToUsers': [userDictionary1, userDictionary2]}
 
         # Act
         collection = Collection(dictionary)
@@ -39,7 +37,6 @@ class TestCollection(unittest.TestCase):
         # Assert
         self.assertEqual(name, collection.name)
         self.assertEqual(publicSharing, collection.publicSharing)
-        self.assertEqual(shareWidgetsByDefault, collection.shareWidgetsByDefault)
         self.assertEqual(collectionId, collection.collectionId)
         self.assertEqual(archived, collection.archived)
         self.assertEqual(2, len(collection.users))
